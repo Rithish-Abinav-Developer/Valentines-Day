@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Will You Be Mine Forever? ❤️</title>
+    
+        <meta property="og:title" content="Will You Be Mine Forever? ❤️">
+        <meta property="og:description" content="Choose wisely: Click 'Yes' to make my heart happy, or 'No' to see what happens in this fun and interactive love challenge.">
+        <meta property="og:image" content="https://example.com/path-to-image.jpg">
+        <meta property="og:url" content="https://yourwebsite.com">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Interactive Love Game">
+    
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Will You Be Mine Forever? ❤️">
+        <meta name="twitter:description" content="Choose wisely: Click 'Yes' to make my heart happy, or 'No' to see what happens in this fun and interactive love challenge.">
+        <meta name="twitter:image" content="https://example.com/path-to-image.jpg">
+        <meta name="twitter:url" content="https://yourwebsite.com">
+    
+
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(10, 10, 10);
+            display: flex;
+            font-family: "PT Sans", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        p{
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        .container {
+            margin: auto;
+            color: white;
+            width: fit-content;
+            text-align: center;
+        }
+
+        .container p {
+            margin: 10px 10px;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            margin: 50px auto 0 auto;
+            gap: 20px;
+        }
+
+        .buttons button {
+            padding: 12px 16px;
+            border: none;
+            width: 100px;
+            border-radius: 5px;
+            color: white;
+            transition: 0.1s all;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: green;
+            margin-left: 25px;
+            position: relative;
+            left: -100px;
+        }
+
+        #yes:hover {
+            background-color: rgb(0, 78, 0);
+        }
+
+        #no {
+            background-color: red;
+        }
+
+        #no:hover {
+            background-color: rgb(153, 0, 0);
+        }
+
+        .no_btn {
+            padding: 30px;
+            position: absolute;
+            left: calc(50% + 10px);
+            transition: 0.5s all;
+        }
+
+        @keyframes scaleAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.5);
+            }
+        }
+
+        .popup{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 90%;
+            max-width: 900px;
+            z-index: 999;
+            animation: pop 0.3s;
+            display: none;
+        }
+
+        @keyframes pop {
+            from{
+                transform: translate(-50%,-50%) scale(0);
+            }
+            to{
+                transform: translate(-50%,-50%) scale(1);
+            }
+        }
+
+        #mobile {
+            color: white;
+            display: flex;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup">
+        <img src="https://pbs.twimg.com/media/GLr_cSEaoAA1NVn.jpg" width="100%">
+    </div>
+    <div class="container">
+        <h1>Will You Be Mine Forever? ❤️</h1>
+        <p>Choose wisely: Click "Yes" to make my heart happy, or "No" to see what happens!</p>
+
+        <div class="buttons">
+            <button id="yes">Yes</button>
+            <div class="no_btn">
+                <button id="no">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let noBtn = document.querySelector(".no_btn");
+        let yesBtn = document.querySelector('#yes')
+        let noButton = noBtn.querySelector("#no");
+        let popUp = document.querySelector(".popup")
+        let windowHeight = window.innerHeight;
+        let windowWidth = window.innerWidth;
+        let index = 0;
+
+        if (windowWidth < 1000) {
+            document.body.innerHTML = "<p id='mobile'>This page is optimized for desktop. Please visit it on a larger screen for a better experience.</p>";
+        }
+
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        yesBtn.addEventListener("click", () => {
+            window.open("https://resize.indiatvnews.com/en/centered/newbucket/1200_675/2020/02/valentines-day-1581614371.jpg")
+        })
+
+        function resetButtonPosition() {
+            let randomHeight = getRandomNumber(0, windowHeight - 100);
+            let randomWidth = getRandomNumber(0, windowWidth - 200);
+
+            noBtn.style.position = "absolute";
+            noBtn.style.top = `${Math.ceil(randomHeight)}px`;
+            noBtn.style.left = `${Math.ceil(randomWidth)}px`;
+        }
+
+        noBtn.addEventListener("mouseenter", () => {
+            index++;
+            console.log(index);
+
+            if (index <= 10) {
+                let randomHeight = getRandomNumber(0, windowHeight - 100);
+                let randomWidth = getRandomNumber(0, windowWidth - 200);
+
+                noBtn.style.position = "absolute";
+                noBtn.style.top = `${Math.ceil(randomHeight)}px`;
+                noBtn.style.left = `${Math.ceil(randomWidth)}px`;
+
+                noBtn.style.animation = "scaleAnimation 0.2s ease";
+                setTimeout(() => {
+                    noBtn.style.animation = "";
+                }, 200);
+            } else {
+                popUp.style.display = 'block';
+                noBtn.style.opacity = 0;
+                setTimeout(() => {
+                    popUp.style.display = 'none';
+                    noBtn.style.opacity = 1;
+
+                    resetButtonPosition();
+                    index = 0;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
